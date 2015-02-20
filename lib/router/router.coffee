@@ -10,4 +10,12 @@ Router.map ->
   @route "about",
     path: "/about"
 
+  @route 'grouped',
+    path: '/grouped'
+
+  @route 'network',
+    path: '/network'
+
+  @route 'map',
+    path: '/map'
   return
