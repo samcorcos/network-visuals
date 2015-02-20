@@ -18,3 +18,5 @@ coffeescript
 mike:mocha
 useraccounts:core
 useraccounts:materialize
+d3
+mrt:topojson
