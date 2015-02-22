@@ -54,16 +54,11 @@ createMap = function() {
       locationConcentration[state] = 0;
     })
 
+    People.find().fetch().forEach(function(person) {
+      var thisState = d3.select('path[class*='+person.location+']');
+      locationConcentration[person.location] += 1;
+    })
 
-    d3.json("locations.json", function(error, data) {
-      if (error) return console.error(error);
-      var locations = data.locations;
-
-      locations.forEach(function(location){
-        var state = location.state;
-        var thisState = d3.select('path[class*='+state+']');
-        locationConcentration[state] += 1;
-      })
 
       //////Added dot in the middle of the state
       /////////////Working with Bubbles
@@ -88,6 +83,5 @@ createMap = function() {
             return radius(locationConcentration[abbrev]);
           });
 
-      })
   })
 }
