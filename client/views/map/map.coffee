@@ -1,0 +1,2 @@
+Template.map.rendered = ->
+  createMap()
