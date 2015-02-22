@@ -1,10 +1,10 @@
-@Collection = new Mongo.Collection 'collection'
+@People = new Mongo.Collection 'people'
 
 if Meteor.isServer
-  Meteor.publish 'collection', -> 
-    Collection.find()
+  Meteor.publish 'people', ->
+    People.find()
 
-  Collection.allow
+  People.allow
     insert: (userid, doc) ->
       true
 
@@ -14,7 +14,7 @@ if Meteor.isServer
     remove: (userId, docs) ->
       true
 
-  Collection.deny
+  People.deny
     insert: (userId, doc) ->
 
     update: (userId, docs, fields, modifier) ->
@@ -23,4 +23,4 @@ if Meteor.isServer
 
 
 if Meteor.isClient
-  Meteor.subscribe 'collection'
+  Meteor.subscribe 'people'
