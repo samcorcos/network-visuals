@@ -18,4 +18,8 @@ Router.map ->
 
   @route 'map',
     path: '/map'
+    waitOn: -> [
+      Meteor.subscribe 'people'
+    ]
+    
   return

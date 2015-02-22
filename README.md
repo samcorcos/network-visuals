@@ -18,6 +18,8 @@ Website for network visuals
 - Links people by "friends"
 - Filter with a search function that highlights/centers/focuses on a particular person in the network
 - Search function needs to have a validating dropdown.
+- Another option: https://github.com/dizzib/WhoDoTheyServe.com
+- Another one: http://emptypipes.org/2015/02/15/selectable-force-directed-graph/
 
 
 ##Grouped
@@ -44,3 +46,13 @@ Website for network visuals
 
 - Other map options: http://bl.ocks.org/mbostock/4055908
 - http://mbostock.github.io/d3/talk/20111116/airports.html
+
+##Growth
+
+- Might be fun to have something like this: http://bost.ocks.org/mike/nations/
+- Would represent a "date joined" or some such statistic
+
+##Treemap
+
+- Option for occuption mapping?
+- http://bl.ocks.org/mbostock/4063582

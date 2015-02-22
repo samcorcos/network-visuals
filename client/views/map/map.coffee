@@ -1,2 +1,3 @@
 Template.map.rendered = ->
-  createMap()
+  createMap (err, res) ->
+    throw err if err
