@@ -61,27 +61,64 @@ createMap = function() {
 
 
       //////Added dot in the middle of the state
-      /////////////Working with Bubbles
+      //////Working with Bubbles
 
-      svg.append("g")
-        .attr("class", "bubble")
-        .selectAll("circle")
-        .data(topojson.feature(us, us.objects.subunits).features)
-        .enter().append("circle")
-          .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-          .attr("r", function(d) {
-            var tempArray = [];
-            for (var num in locationConcentration) {
-              tempArray.push(locationConcentration[num])
-            }
+    svg.append("g")
+      .attr("class", "bubble")
+      .selectAll("circle")
+      .data(topojson.feature(us, us.objects.subunits).features)
+      .enter().append("circle")
+        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+        .attr("r", function(d) {
+          var tempArray = [];
+          for (var num in locationConcentration) {
+            tempArray.push(locationConcentration[num])
+          }
 
-            var radius = d3.scale.sqrt()
-              .range([d3.min(tempArray), d3.max(tempArray)]);
+          var radius = d3.scale.sqrt()
+            .range([d3.min(tempArray), d3.max(tempArray)]);
 
-            var abbrev = d.id.split('-').pop();
+          var abbrev = d.id.split('-').pop();
 
-            return radius(locationConcentration[abbrev]);
-          });
+          return radius(locationConcentration[abbrev]);
+        });
+
+
+        //////////////Tooltips
+    var tooltip = d3.select('body').append('div')
+      .style('position', 'absolute')
+      .style('padding', '0 10px')
+      .style('background', 'black')
+      .style('color','white')
+      .style('opacity', 0) // setting to 0 because we dont want it to show when the graphic first loads
+
+    d3.selectAll('circle').on('mouseover', function(d) {
+      var stateAbbrev = d.id.split('-')[1];
+
+      var peopleInState = People.find({location: stateAbbrev}).fetch() // Gives a list of all the people who live in the hovered-over state
+      console.log(peopleInState);
+
+      stateTooltip = []
+
+      peopleInState.forEach(function(person) {
+        stateTooltip.push(person.name + "</br>")
+      })
+
+      tooltip.transition()
+      .style('opacity', .9)
+      tooltip.html(stateTooltip.join(""))
+
+
+      .style('left', (d3.event.pageX + 20) + 'px')
+      .style('top', (d3.event.pageY - 30) + 'px')
+    })
+
+
+    .on('mouseout', function(d) {
+      tooltip.transition().duration(500)
+      .style('opacity', 0)
+
+    })    ////////////End tooltip
 
   })
 }
