@@ -1,5 +1,34 @@
 <template name="grouped">
   <div class="full-page">
-    
+	<div class="row force-chart center-align">
+		<div class="force-legend col s4 m4 l4">
+			<div class="row center-align legend-div">
+			{{#if group.length}}
+				<h5 class="force-legend blue lighten-4 white-text z-depth-1">
+					{{capitalize category}} ({{group.length}})
+				</h5>
+			{{else}}
+				<h5 class="force-legend blue lighten-4 white-text z-depth-1">
+					{{capitalize category}}
+				</h5>
+			{{/if}}
+				<div class="collection force-list">
+					{{#each group}}
+						<a href="#!" class="collection-item">{{name}}</a>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+		<div id="group-force" class="border-force col s8 m8 l8">
+			<div class="row force-nav center-align">
+				<h5>Network Force Layout</h5>
+			</div>
+			<div class="row force-nav center-align">
+			  	<a id="occupation" class="waves-effect waves-light btn blue lighten-4">Occupation</a>
+				<a id="gender" class="waves-effect waves-light btn blue lighten-4">Gender</a>
+				<a id="status" class="waves-effect waves-light btn blue lighten-4">Status</a>
+			</div>
+		</div>
+	</div>
   </div>
 </template>

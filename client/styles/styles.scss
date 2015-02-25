@@ -31,6 +31,28 @@ h1, h2, h3, h4, p {
   min-height: 88vh;
 }
 
+.force-nav {
+  padding-top: 1rem;
+  a {
+    width: 10rem;
+  }
+}
+
+.border-force {
+  border-left: solid 0.5rem #bbdefb;
+  opacity: 0.8;
+}
+
+.force-legend {
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.force-list {
+  height: 300px;
+  overflow-y: scroll;
+}
+
 /* @each \$classname in another-ny, blue-city {
   .#{\$classname}-background {
     background: url(/background/#{\$classname}.jpg) no-repeat center center;

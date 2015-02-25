@@ -12,6 +12,9 @@ Router.map ->
 
   @route 'grouped',
     path: '/grouped'
+    waitOn: -> [
+      Meteor.subscribe 'people'
+    ]
 
   @route 'network',
     path: '/network'
