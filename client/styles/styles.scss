@@ -31,6 +31,30 @@ h1, h2, h3, h4, p {
   min-height: 88vh;
 }
 
+
+ul.tabs {
+  position: relative;
+  height: 48px;
+  background-color: #FFF;
+  margin: 0 auto;
+  width: 100%;
+  white-space: nowrap;
+}
+
+ul.tabs li.tab {
+  background-color: #fff;
+}
+ul.tabs li.tab a {
+  color: #000;
+}
+ul.tabs li.tab a:hover {
+  color: lighten($green, 5%);
+}
+ul.tabs .indicator {
+  background-color: $green;
+}
+
+
 /* @each \$classname in another-ny, blue-city {
   .#{\$classname}-background {
     background: url(/background/#{\$classname}.jpg) no-repeat center center;
