@@ -26,7 +26,7 @@ Template.grouped.rendered = ->
 		Session.set 'tickString', "marital_status"
 		force.start()
 
-	width = 800
+	width = 800 # TODO is there a way to turn these into functions relative to view width? There will eventually be as many as 400-500 people
 	height = 200
 
 	fill = d3.scale.category20()
@@ -91,7 +91,7 @@ Template.grouped.rendered = ->
 			d3.select(@).style 'opacity', 0.6
 		.on 'mouseout', ->
 			d3.select(@).style 'opacity', 1
-			
+
 
 	text = nodeGroup.append 'text'
 		.attr 'class', 'data'
@@ -107,6 +107,36 @@ Template.grouped.rendered = ->
 		.duration(1000)
 		.style 'opacity', 1
 
+	### Tooltips ###
+	tooltip = d3.select 'body'
+		.append 'div'
+		.style 'position', 'absolute'
+		.style 'padding', '0 10px'
+		.style 'background', 'black'
+		.style 'color', 'white'
+		.style 'opacity', 0
+
+	d3.selectAll 'circle'
+		.on 'mouseover', (d) ->
+			console.log d
+
+			tooltip.transition()
+			.style 'opacity', 0.9
+
+			tooltip.html d.name
+			.style('left', d3.event.pageX + 10 + 'px')
+			.style('top', d3.event.pageY - 10 + 'px')
+
+		.on 'mouseout', (d) ->
+			tooltip.transition().duration(500)
+			.style 'opacity', 0
+
+	### End Tooltips ###
+
+
+
+
+
 Template.grouped.helpers
 	category: ->
 		cat = Session.get 'category'
@@ -116,19 +146,3 @@ Template.grouped.helpers
 
 	group: ->
 		Session.get 'group'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

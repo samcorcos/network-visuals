@@ -6,10 +6,8 @@ createMap = function() {
     .scale(1000)
     .translate([width / 2, height / 2]);
 
-
   var path = d3.geo.path()
     .projection(projection);
-
 
   var svg = d3.select("#concentration-map").append("svg")
     .attr("viewBox", "0 50 1000 550")
@@ -33,8 +31,6 @@ createMap = function() {
       .attr("d", path)
       .style('fill','#aaa')
 
-
-
     /////////Gives state boundary line
     svg.insert('path','.graticule')
       .datum(topojson.feature(us, us.objects.subunits,function(a, b) { return a !== b; }))
@@ -42,7 +38,6 @@ createMap = function() {
       .attr("d", path)
       .attr('stroke','#FFF')
       .style('fill','none')
-
 
     ///Populating stateHeat for use in heatmap below
     var locationConcentration = {};
@@ -58,7 +53,6 @@ createMap = function() {
       var thisState = d3.select('path[class*='+person.location+']');
       locationConcentration[person.location] += 1;
     })
-
 
       //////Added dot in the middle of the state
       //////Working with Bubbles
@@ -83,7 +77,6 @@ createMap = function() {
           return radius(locationConcentration[abbrev]);
         });
 
-
         //////////////Tooltips
     var tooltip = d3.select('body').append('div')
       .style('position', 'absolute')
@@ -96,7 +89,6 @@ createMap = function() {
       var stateAbbrev = d.id.split('-')[1];
 
       var peopleInState = People.find({location: stateAbbrev}).fetch() // Gives a list of all the people who live in the hovered-over state
-      console.log(peopleInState);
 
       stateTooltip = []
 
@@ -112,7 +104,6 @@ createMap = function() {
       .style('left', (d3.event.pageX + 20) + 'px')
       .style('top', (d3.event.pageY - 30) + 'px')
     })
-
 
     .on('mouseout', function(d) {
       tooltip.transition().duration(500)

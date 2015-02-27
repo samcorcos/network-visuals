@@ -12,6 +12,7 @@ $red: #A53000;
 @import 'nav';
 @import 'footer';
 @import 'map';
+@import 'force';
 
 body, html {
   font-family: $font-stack;
@@ -31,27 +32,28 @@ h1, h2, h3, h4, p {
   min-height: 88vh;
 }
 
-.force-nav {
-  padding-top: 1rem;
-  a {
-    width: 10rem;
-  }
-}
-
-.border-force {
-  border-left: solid 0.5rem #bbdefb;
-  opacity: 0.8;
-}
-
-.force-legend {
+ul.tabs {
+  position: relative;
+  height: 48px;
+  background-color: #FFF;
+  margin: 0 auto;
   width: 100%;
-  padding: 1.5rem 0;
+  white-space: nowrap;
 }
 
-.force-list {
-  height: 300px;
-  overflow-y: scroll;
+ul.tabs li.tab {
+  background-color: #fff;
 }
+ul.tabs li.tab a {
+  color: #000;
+}
+ul.tabs li.tab a:hover {
+  color: lighten($green, 5%);
+}
+ul.tabs .indicator {
+  background-color: $green;
+}
+
 
 /* @each \$classname in another-ny, blue-city {
   .#{\$classname}-background {
