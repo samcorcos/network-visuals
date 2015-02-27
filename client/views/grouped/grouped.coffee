@@ -1,11 +1,13 @@
 Template.grouped.rendered = ->
+	$('ul.tabs').tabs()
+
 	nodes = People.find().fetch()
 	defStart = 'occupation'
 	Session.setDefault 'tickString', defStart
 	Session.setDefault 'category', defStart
 	Session.setDefault 'group', []
 
-	document.getElementById("gender").addEventListener "click", (e) ->
+	document.getElementById("gender").addEventListener "click", (e) -> # TODO show how to make these as Template.events rather than event listeners
 		category = _.uniq _.pluck(nodes, 'gender')
 		Session.set 'category', 'gender'
 		Session.set 'tickString', "gender"
