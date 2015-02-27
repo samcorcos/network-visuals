@@ -1,30 +1,14 @@
 <template name="grouped">
   <div class="full-page">
-	<div class="row force-chart center-align">
-		<div id="group-force" class="border-force col s12">
-			<div class="row force-nav center-align">
-				<h5>Network Force Layout</h5>
-			</div>
-			<div class="row force-nav center-align">
-        <div class="col s12">
-          <ul class="tabs">
-            <li class="tab col s3" id="occupation"><a href="">Occupation</a></li>
-            <li class="tab col s3" id="gender"><a href="">Gender</a></li>
-            <li class="tab col s3" id="status"><a href="">Status</a></li>
-            <li class="tab col s3"><a href="">Group 4</a></li>
-          </ul>
-        </div>
-			</div>
-		</div>
-    <div class="col s12">
-      <div class="force-legend col s12">
-        <div class="row center-align legend-div">
+  	<div class="row center-align">
+      <div class="col s12 m4">
+        <div class="row center-align">
         {{#if group.length}}
-          <h5 class="force-legend blue lighten-4 white-text z-depth-1">
+          <h5 class="force-legend blue white-text z-depth-1">
             {{capitalize category}} ({{group.length}})
           </h5>
         {{else}}
-          <h5 class="force-legend blue lighten-4 white-text z-depth-1">
+          <h5 class="force-legend blue white-text z-depth-1">
             {{capitalize category}}
           </h5>
         {{/if}}
@@ -35,7 +19,15 @@
           </div>
         </div>
       </div>
-    </div>
-	</div>
+      <div class="col s12 m8 force-group">
+          <ul class="tabs">
+            <li class="tab col s3" id="occupation"><a href="">Occupation</a></li>
+            <li class="tab col s3" id="gender"><a href="">Gender</a></li>
+            <li class="tab col s3" id="status"><a href="">Status</a></li>
+            <li class="tab col s3"><a href="">Group 4</a></li>
+          </ul>
+        <div id="group-force"></div>
+      </div>
+  	</div>
   </div>
 </template>

@@ -1,16 +1,12 @@
-.force-nav {
-  padding-top: 1rem;
-  a {
-    width: 10rem;
-  }
-}
-
 .force-legend {
-  width: 100%;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
 }
 
 .force-list {
-  height: 300px;
+  max-height: 70vh;
   overflow-y: scroll;
+}
+
+.force-group {
+  margin: 2rem 0;
 }

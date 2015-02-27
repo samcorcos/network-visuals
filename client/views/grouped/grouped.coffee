@@ -14,7 +14,7 @@ Template.grouped.rendered = ->
 		Session.set 'group', []
 		force.start()
 
-	document.getElementById("occupation").addEventListener "click", (e) ->
+	document.getElementById("occupation").addEventListener "click", (e) -> # TODO when we change a category, we want to select a random circle so the legend shows something
 		category = _.uniq _.pluck(nodes, 'occupation')
 		Session.set 'category', 'occupation'
 		Session.set 'tickString', "occupation"
