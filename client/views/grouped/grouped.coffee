@@ -7,18 +7,26 @@ Template.grouped.rendered = ->
 	Session.setDefault 'category', defStart
 	Session.setDefault 'group', []
 
+	legendClick = ->
+    x = document.createEvent('UIEvents')
+    x.initUIEvent('click', true, true)
+    d3.select('circle').node().dispatchEvent(x)
+
 	document.getElementById("gender").addEventListener "click", (e) -> # TODO show how to make these as Template.events rather than event listeners
 		category = _.uniq _.pluck(nodes, 'gender')
 		Session.set 'category', 'gender'
 		Session.set 'tickString', "gender"
 		Session.set 'group', []
+		legendClick()
 		force.start()
 
-	document.getElementById("occupation").addEventListener "click", (e) -> # TODO when we change a category, we want to select a random circle so the legend shows something
+
+	document.getElementById("occupation").addEventListener "click", (e) ->
 		category = _.uniq _.pluck(nodes, 'occupation')
 		Session.set 'category', 'occupation'
 		Session.set 'tickString', "occupation"
 		Session.set 'group', []
+		legendClick()
 		force.start()
 
 	document.getElementById("status").addEventListener "click", (e) ->
@@ -26,6 +34,7 @@ Template.grouped.rendered = ->
 		Session.set 'category', 'Marital Status'
 		Session.set 'group', []
 		Session.set 'tickString', "marital_status"
+		legendClick()
 		force.start()
 
 	width = 800 # TODO is there a way to turn these into functions relative to view width? There will eventually be as many as 400-500 people
@@ -134,6 +143,7 @@ Template.grouped.rendered = ->
 			.style 'opacity', 0
 
 	### End Tooltips ###
+	legendClick()
 
 
 
